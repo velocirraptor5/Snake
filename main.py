@@ -58,8 +58,8 @@ def imprime(n, fitness, poblIt):
 
 def probabilidad(fitness,acumulado,listamejores):
     proba = []
-    total= acumulado[int(len(acumulado)/2)]
-    for i in range((int)(len(acumulado)/2)):
+    total= acumulado[int(len(acumulado)-1)]
+    for i in range((int)(len(acumulado))):
         proba.append(acumulado[i] / total)
     return copy.deepcopy(proba)
 
@@ -160,8 +160,8 @@ iteraciones=1000
 
 m = 7  # numero de variables de decision - Elementos diferentes: m
 n = 1000  # numero de individuos en la poblacion: n
-Pcruce = 0.75 # Probabilidad de Cruce
-Pmuta = 0.005  # Probabilidad de Mutación
+Pcruce = 0.9 # Probabilidad de Cruce
+Pmuta = 0.01  # Probabilidad de Mutación
 
 fitness = np.empty((n))
 suma = 0
@@ -1034,8 +1034,11 @@ for iter in range(iteraciones):
         else:
             break
     
-    for mej in range(int(len(mejores)/2)):
+    for mej in range(int(len(mejores))):
+      if mej<5:
         poblacion_aux.append(seleccionMejores(mejores,mej,poblIt))
+        else:
+          break
 
     while (cont_hijo < n):
         # for i in [0, 2]:  # Para el bloque de 2 hijos cada vez
