@@ -1,7 +1,5 @@
 import numpy as np
 
-
-
 class RedNeuronal:
     def __init__(self,neu,eta,p=[[[-1]]]):
         self.neu=neu
